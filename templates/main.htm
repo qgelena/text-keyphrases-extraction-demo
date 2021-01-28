@@ -1,0 +1,16 @@
+{% extends 'base.htm' %}
+
+{% block title %}
+main page
+{% endblock %}
+
+{% block body %}
+<h1>text-keyphrases-extraction-demo</h1>
+<hr>
+<div>It is supposed to extract key phrases from given pieces of text.</div>
+<form action="/text" method="POST">
+    <textarea name="text" rows="10" cols="70" placeholder="Enter your text here..."></textarea>
+    <br>
+    <input type='submit' value='Save and extract key phrases'/>
+</form>
+{% endblock %}

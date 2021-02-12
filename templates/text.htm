@@ -19,7 +19,7 @@ text #{{id}}
     <tbody>
         {% for kph in keyphrases -%}
         <tr>
-            <td>{{kph[1]}}</td>
+            <td>{{'%.2f' % kph[1]|float}}</td>
             <td>{{kph[0]}}</td>
         </tr>
         {% endfor -%}

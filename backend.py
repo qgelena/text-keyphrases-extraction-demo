@@ -22,7 +22,7 @@ def text_form():
 @app.route('/text/<int:id>')
 def text_page(id):
     text = app.db.get_text(id)
-    keywords = app.extractor.get_keywords(text)
+    keywords = app.db.get_keywords(id)
     
     return flask.render_template('text.htm',
         id=id,

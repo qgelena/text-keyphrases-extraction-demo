@@ -63,7 +63,18 @@ class Database:
             pairs
         )
         self.conn.commit()
-        
+    
+    def get_keywords(self, text_id):
+        query = '''SELECT k.keyphrase, tk.relevance, k.wikilink
+        FROM TextKeyphrases tk 
+        LEFT JOIN Keyphrases k ON tk.keyphrase_id = k.rowid
+        WHERE tk.text_id = ?'''
+        try:
+            cur = self.conn.cursor()
+            cur.execute(query, (text_id,))
+            return cur.fetchall()
+        finally:
+            cur.close()
 
 if __name__ == '__main__':
     db = Database('ProphyTest.db')

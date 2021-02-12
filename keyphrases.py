@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import RAKE
 import operator
+import gensim
 
 test_text = "AI Platform Pipelines has two major parts: (1) the infrastructure \
 for deploying and running structured AI workflows that are integrated with Google \
@@ -21,6 +22,8 @@ class KeywordsExtractor:
 
     def get_keywords(self, text, sortby=None, count=None):
         """ Тут буде документація """
+        tokens = preprocess(text)
+        text = ' '.join(tokens)
         keywords = self.rake_extractor.run(text)
         if sortby == 'relevance':
             keywords.sort(key=lambda v: v[1], reverse=True)
@@ -28,6 +31,14 @@ class KeywordsExtractor:
             keywords = keywords[:count]
         return keywords
 
+def preprocess(text):
+    '''Remove stopwords and remove words with 2 or less characters'''
+    result = []
+    for token in gensim.utils.simple_preprocess(text):
+        if len(token) > 2:
+            result.append(token)
+            
+    return result
 
 if __name__ == '__main__':
     extractor = KeywordsExtractor()

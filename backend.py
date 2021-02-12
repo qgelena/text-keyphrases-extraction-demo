@@ -33,4 +33,4 @@ def text_page(id):
 if __name__ == '__main__':
     app.db = Database('ProphyTest.db')
     app.extractor = KeywordsExtractor()
-    app.run(debug=True) #main loop of the server / event loop 
+    app.run(debug=True) # main loop of the server / event loop

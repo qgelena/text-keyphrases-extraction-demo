@@ -15,7 +15,7 @@ the pipeline and submits it to the Pipelines REST API server, which stores and s
 the pipeline for execution."
 
 class KeywordsExtractor:
-    STOPWORDS_PATH = '/home/qgelena/code/Prophy_Science_test_roject/SmartStoplist.txt'
+    STOPWORDS_PATH = 'SmartStoplist.txt'
 
     def __init__(self):
         self.rake_extractor = RAKE.Rake(self.STOPWORDS_PATH)
